@@ -339,3 +339,63 @@ binaire zoekboom
 ### Spelbomen
 
 ## Netwerkmodellen en petri-netten
+
+### Transportmodel
+
+transportnetwerk
+:	een transportnetwerk(of simpelweg een netwerk) is een enkelvoudige gewogen, gerichte graaf die voldoet aan:
+- er is juist één knoop in G zonder binnenkomende bogen, deze knoop wordt de bron genoemd.
+- er is juist één knoop in G zonder buitengaande bogen, deze knoop wordt de put genoemd.
+- het gewicht $c_{i,j}$ van de gerichte boog $(i,j)$ is positief en wordt de capaciteit van de boog genoemd.
+- G is samenhangend.
+
+stroming
+:	Voor een netwerk $G(V,E)$ met capaciteiten $C_{i,j}, i,j \in V$ is F een stroming als F een afbeelding is van E naar $\mathbb{R}^+$ zodanig dat
+- $F(i,j) \leq c_{i,j}$
+- voor elke knoop $j$die niet de bron of de put is geldt $\sum\limits_{i \in V} {F(i,j)} = \sum\limits_{i \in V} {j, i}$.
+
+	We noemen $F(i,j)$ de stroming in een boog $(i,j)$. Voor een knoop $j$ noemen we $\sum\limits_{i \in v} {F(i,j)}$ de stroming naar of in $j$ en $\sum\limits_{i \in v} {F(j,i)}$ de stroming van of uit $j$.
+
+grootte van een stroming
+:	de grootte van een stroming F in een netwerk $G(V,E)$ met bron $a$ en put $z$ is gedefinieerd door $\sum\limits_{i \in V} F(a,i)$ of $\sum\limits_{i \in V} F(i, z)$
+
+### Maximale stroming
+
+goede/slechte boog
+:	in een gerichte graaf $G(V,E)$ met met pad $(v_1, v_2, ..., v_n)$ noemen we een boog $(v_i, v_{i+1})$ goed (gericht) indien $(v_i, v_{i+1}) \in E$ en anders slecht gericht.
+
+snede
+:	een snsede van een netwerk $G(V,E)$ met bron $a$ en put $z$is een tweetal $(P, \bar{P})$ zodanig dat $a \in P, z \in \bar{P}, P\cup \bar{P} = V$ en $P\cap \bar{P} = \emptyset$
+
+capaciteit van een snede
+:	de capaciteit van een snede $(p, \bar{P})$ is $C(P, \bar{P}) = \sum\limits_{i\in P} {\sum\limits_{j \in \bar{P}} {C_{(i,j)}}}$.
+
+Max flow, min cut
+:	Voor een snede$(P, \bar{P})$ en stroming $F$ in een net $G(V,E)$ geldt dat als $C(P, \bar{P}) = F$, dan is de stroming maximaal en de snede minimaal. 
+
+### Matching
+
+matching
+:	Voor een gerichte tweeledige graaf $G(V\cup W, E)$ waarbij $V\cap W = \emptyset$ en $E \subseteq V\times W$ is $M$ een overeenkomst of matching indien
+- $M \subseteq E$
+- $\forall(x,y), (i,j) \in M$: indien $(i,j) \neq (x,y)$ dan is $i \neq  x$ en $j \neq y$ (ttz in elke knoop komt hoogstens een boog aan en vertrekt er hoogstens een)
+
+maximale matching
+:	een maximale matching heeft een maximaal aantal bogen in M. Een matching is volledig indien $\forall v \in V, \exists w \in W: (v,w) \in M$
+
+### Petrinetten
+
+petrinet
+:	een petrinet is een enkelvoudige gerichte graaf $G(V,E)$ waarbij $V = P\cup T, P\cap T = \emptyset$ en $E\subseteq P \times T \cup T\times P; P$ noemen we plaatsen en $T$ transities.
+
+markering van een petrinet
+:	een markering van een petrinet is een toekenning van een natuurlijk getal aan elke plaats van het petrinet.
+
+bereikbare markering
+:	een markering M' is bereikbaar vanuit een markering M indien er vertrekkend van M een salvo is dat M' als resultaat heeft.
+
+levende markering
+:	Een markering M van een petrinet is levend indien na elk salvo te beginnnen bij M er voor elke transitie t een salvo bestaat zodanig dat na dat salvo t actief wordt
+
+begrensde markering
+:	een markering M is begrensd indien er een n bestaat zodanig dat bij gelijk welk salvo geen enkele plaats ooit meer dan n tokes bevat. Een begrensde markering waarvoor $n=1$ wordt een veilige markering genoemd.
