@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>definities fundamenten</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">definities fundamenten</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#inleiding"><span class="toc-section-number">1</span> inleiding</a></li>
+<li><a href="#achtergrond"><span class="toc-section-number">2</span> achtergrond</a></li>
+<li><a href="#talen-automaten-en-berekenbaarheid"><span class="toc-section-number">3</span> Talen, automaten en berekenbaarheid</a><ul>
+<li><a href="#strings-en-talen"><span class="toc-section-number">3.1</span> strings en talen</a><ul>
+<li><a href="#strings"><span class="toc-section-number">3.1.1</span> strings</a></li>
+<li><a href="#talen"><span class="toc-section-number">3.1.2</span> talen</a></li>
+<li><a href="#reguliere-talen"><span class="toc-section-number">3.1.3</span> reguliere talen</a></li>
+<li><a href="#reguliere-uitdrukkingen"><span class="toc-section-number">3.1.4</span> reguliere uitdrukkingen</a></li>
+</ul></li>
+<li><a href="#eindige-automaten"><span class="toc-section-number">3.2</span> eindige automaten</a><ul>
+<li><a href="#eindige-automaten-1"><span class="toc-section-number">3.2.1</span> eindige automaten</a></li>
+<li><a href="#eindige-automaten-en-reguliere-talen"><span class="toc-section-number">3.2.2</span> Eindige automaten en reguliere talen</a></li>
+<li><a href="#niet-deterministische-automaten"><span class="toc-section-number">3.2.3</span> Niet-deterministische automaten</a></li>
+</ul></li>
+<li><a href="#turingmachines"><span class="toc-section-number">3.3</span> Turingmachines</a><ul>
+<li><a href="#turingmachines-1"><span class="toc-section-number">3.3.1</span> Turingmachines</a></li>
+<li><a href="#turingmachines-en-functies"><span class="toc-section-number">3.3.2</span> Turingmachines en functies</a></li>
+<li><a href="#turingmachines-en-talen"><span class="toc-section-number">3.3.3</span> Turingmachines en talen</a></li>
+<li><a href="#niet-deterministische-turing-machines"><span class="toc-section-number">3.3.4</span> Niet-deterministische turing-machines</a></li>
+</ul></li>
+<li><a href="#analyse-van-algoritmen"><span class="toc-section-number">3.4</span> analyse van algoritmen</a><ul>
+<li><a href="#tijdscomplexiteit-van-algoritmen"><span class="toc-section-number">3.4.1</span> tijdscomplexiteit van algoritmen</a></li>
+<li><a href="#het-bepalen-van-complexiteit-in-enkele-voorbeelden"><span class="toc-section-number">3.4.2</span> het bepalen van complexiteit in enkele voorbeelden</a></li>
+</ul></li>
+<li><a href="#complexiteitsklassen-van-beslissingsproblemen"><span class="toc-section-number">3.5</span> complexiteitsklassen van beslissingsproblemen</a><ul>
+<li><a href="#de-klassen-p-en-np"><span class="toc-section-number">3.5.1</span> de klassen P en NP</a></li>
+<li><a href="#de-klasse-np-compleet"><span class="toc-section-number">3.5.2</span> De klasse NP-compleet</a></li>
+<li><a href="#andere-complexiteitsklassen"><span class="toc-section-number">3.5.3</span> andere complexiteitsklassen</a></li>
+</ul></li>
+<li><a href="#besluit"><span class="toc-section-number">3.6</span> besluit</a></li>
+</ul></li>
+<li><a href="#grafentheorie"><span class="toc-section-number">4</span> grafentheorie</a><ul>
+<li><a href="#inleiding-1"><span class="toc-section-number">4.1</span> inleiding</a><ul>
+<li><a href="#de-kortste-weg-tussen-twee-adressen"><span class="toc-section-number">4.1.1</span> de kortste weg tussen twee adressen</a></li>
+<li><a href="#de-bruggen-van-koningsberg"><span class="toc-section-number">4.1.2</span> de bruggen van Koningsberg</a></li>
+<li><a href="#de-boer-de-wolf-de-kool-en-de-geit"><span class="toc-section-number">4.1.3</span> de boer, de wolf, de kool en de geit</a></li>
+<li><a href="#vier-op-een-rij"><span class="toc-section-number">4.1.4</span> Vier op een rij</a></li>
+</ul></li>
+<li><a href="#grafen"><span class="toc-section-number">4.2</span> Grafen</a><ul>
+<li><a href="#basisdefinities"><span class="toc-section-number">4.2.1</span> basisdefinities</a></li>
+<li><a href="#paden"><span class="toc-section-number">4.2.2</span> paden</a></li>
+<li><a href="#deelgrafen-en-componenten"><span class="toc-section-number">4.2.3</span> deelgrafen en componenten</a></li>
+<li><a href="#gerichte-grafen"><span class="toc-section-number">4.2.4</span> Gerichte grafen</a></li>
+</ul></li>
+<li><a href="#voorstelling-van-grafen"><span class="toc-section-number">4.3</span> voorstelling van grafen</a><ul>
+<li><a href="#buurmatrix"><span class="toc-section-number">4.3.1</span> buurmatrix</a></li>
+<li><a href="#booleaanse-buurmatrix"><span class="toc-section-number">4.3.2</span> booleaanse buurmatrix</a></li>
+<li><a href="#incidentiematrix"><span class="toc-section-number">4.3.3</span> incidentiematrix</a></li>
+</ul></li>
+<li><a href="#isomorfisme-van-grafen"><span class="toc-section-number">4.4</span> isomorfisme van grafen</a></li>
+<li><a href="#gewogen-grafen"><span class="toc-section-number">4.5</span> gewogen grafen</a><ul>
+<li><a href="#kortste-pad-algoritme-van-dijkstra"><span class="toc-section-number">4.5.1</span> kortste pad algoritme van Dijkstra</a></li>
+<li><a href="#dijkstra-versie-1"><span class="toc-section-number">4.5.2</span> Dijkstra, versie 1</a></li>
+<li><a href="#dijkstra-versie-2"><span class="toc-section-number">4.5.3</span> dijkstra versie 2</a></li>
+<li><a href="#complexiteit-van-dijkstras-algoritme"><span class="toc-section-number">4.5.4</span> complexiteit van Dijkstra’s algoritme</a></li>
+</ul></li>
+<li><a href="#bijzondere-klassen-van-grafen"><span class="toc-section-number">4.6</span> bijzondere klassen van grafen</a></li>
+<li><a href="#vlakke-grafen"><span class="toc-section-number">4.7</span> vlakke grafen</a><ul>
+<li><a href="#de-formule-van-euler"><span class="toc-section-number">4.7.1</span> de formule van Euler</a></li>
+<li><a href="#karakterisatie-van-vlakke-grafen"><span class="toc-section-number">4.7.2</span> karakterisatie van vlakke grafen</a></li>
+<li><a href="#duale-grafen"><span class="toc-section-number">4.7.3</span> duale grafen</a></li>
+</ul></li>
+<li><a href="#kleuring-van-grafen"><span class="toc-section-number">4.8</span> kleuring van grafen</a></li>
+<li><a href="#bomen"><span class="toc-section-number">4.9</span> bomen</a><ul>
+<li><a href="#opspannende-bomen"><span class="toc-section-number">4.9.1</span> opspannende bomen</a></li>
+<li><a href="#minimaal-opspannende-bomen"><span class="toc-section-number">4.9.2</span> minimaal opspannende bomen</a></li>
+</ul></li>
+<li><a href="#gewortelde-bomen"><span class="toc-section-number">4.10</span> gewortelde bomen</a><ul>
+<li><a href="#binaire-bomen"><span class="toc-section-number">4.10.1</span> binaire bomen</a></li>
+<li><a href="#zoekbomen"><span class="toc-section-number">4.10.2</span> zoekbomen</a></li>
+<li><a href="#praktische-voorstelling-van-bomen"><span class="toc-section-number">4.10.3</span> Praktische voorstelling van bomen</a></li>
+<li><a href="#het-doorlopen-van-gewortelde-bomen"><span class="toc-section-number">4.10.4</span> Het doorlopen van gewortelde bomen</a></li>
+<li><a href="#spelbomen"><span class="toc-section-number">4.10.5</span> Spelbomen</a></li>
+</ul></li>
+<li><a href="#netwerkmodellen-en-petri-netten"><span class="toc-section-number">4.11</span> Netwerkmodellen en petri-netten</a><ul>
+<li><a href="#transportmodel"><span class="toc-section-number">4.11.1</span> Transportmodel</a></li>
+<li><a href="#maximale-stroming"><span class="toc-section-number">4.11.2</span> Maximale stroming</a></li>
+<li><a href="#matching"><span class="toc-section-number">4.11.3</span> Matching</a></li>
+<li><a href="#petrinetten"><span class="toc-section-number">4.11.4</span> Petrinetten</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="inleiding"><a href="#inleiding"><span class="header-section-number">1</span> inleiding</a></h1>
+<h1 id="achtergrond"><a href="#achtergrond"><span class="header-section-number">2</span> achtergrond</a></h1>
+<h1 id="talen-automaten-en-berekenbaarheid"><a href="#talen-automaten-en-berekenbaarheid"><span class="header-section-number">3</span> Talen, automaten en berekenbaarheid</a></h1>
+<h2 id="strings-en-talen"><a href="#strings-en-talen"><span class="header-section-number">3.1</span> strings en talen</a></h2>
+<h3 id="strings"><a href="#strings"><span class="header-section-number">3.1.1</span> strings</a></h3>
+<dl>
+<dt>alfabet</dt>
+<dd><p>een alfabet is een niet-lege eindige verzameling. De elementen van de verzameling worden symbolen genoemd.</p>
+</dd>
+<dt>string</dt>
+<dd><p>Een string s over een alfabet <span class="math">Σ </span> is een eindige rij symbolen uit <span class="math">Σ </span>. Het aantal symbolen in een string is de lengte van de string, genoteerd met <span class="math">∣<em>s</em>∣</span>.De string met lengte nul wordt de lege string genoemd en wordt genoteerd met <span class="math"><em>λ</em></span>. De verzameling van alle strings over een alfabet <span class="math">Σ </span> wordt genoteerd met <span class="math">Σ <sup> * </sup></span>.</p>
+</dd>
+</dl>
+<h3 id="talen"><a href="#talen"><span class="header-section-number">3.1.2</span> talen</a></h3>
+<dl>
+<dt>taal</dt>
+<dd>een taal over een alfabet <span class="math">Σ </span> is een verzameling strings over <span class="math">Σ </span>, anders gezegd: een taal over <span class="math">Σ </span> is een deelverzameling van <span class="math">Σ <sup> * </sup></span>
+</dd>
+</dl>
+<h3 id="reguliere-talen"><a href="#reguliere-talen"><span class="header-section-number">3.1.3</span> reguliere talen</a></h3>
+<dl>
+<dt>reguliere taal</dt>
+<dd>indien <span class="math">Σ </span> een alfabet is, dan wordt de klasse R van alle reguliere talen over <span class="math">Σ </span> inductief als volgt gedefinieert:
+</dd>
+</dl>
+<ul>
+<li><span class="math">∅ ∈ <em>R</em>, {<em>λ</em>} ∈ <em>R</em></span> en <span class="math">∀ <em>σ</em> ∈ Σ : <em>σ</em> ∈ <em>R</em></span></li>
+<li>indien <span class="math"><em>A</em>, <em>B</em> ∈ <em>R</em></span>, dan ook <span class="math"><em>A</em><em>B</em> ∈ <em>R</em></span> en <span class="math"><em>A</em><sup> * </sup> ∈ <em>R</em></span>.</li>
+<li>Elke taal uit R wordt ook een reguliere taal genoemd.</li>
+</ul>
+<h3 id="reguliere-uitdrukkingen"><a href="#reguliere-uitdrukkingen"><span class="header-section-number">3.1.4</span> reguliere uitdrukkingen</a></h3>
+<dl>
+<dt>reguliere uitdrukking</dt>
+<dd>indien <span class="math">Σ </span> een alfabet is, dan wordt een reguliere uitdrukking op volgende wijze inductief gedefieerd:
+</dd>
+</dl>
+<ul>
+<li><span class="math">∅</span> is een regeliere uitdrukking</li>
+<li><span class="math"><em>λ</em></span> is een reguliere uitdrukking</li>
+<li>voor elke <span class="math"><em>σ</em> ∈ Σ </span> is <span class="math"><em>σ</em></span> een reguliere uitdrukking</li>
+<li>indien A en B reguliere uitdrukkingen zijn, dan zijn ook <span class="math">(<em>A</em>), <em>A</em><sup> * </sup>, <em>A</em>∣<em>B</em><em>e</em><em>n</em><em>A</em><em>B</em></span> reguliere uitdrukkingen</li>
+</ul>
+<h2 id="eindige-automaten"><a href="#eindige-automaten"><span class="header-section-number">3.2</span> eindige automaten</a></h2>
+<h3 id="eindige-automaten-1"><a href="#eindige-automaten-1"><span class="header-section-number">3.2.1</span> eindige automaten</a></h3>
+<dl>
+<dt>eindige automaat</dt>
+<dd>Een eindige automaat is een vijftal <span class="math"><em>A</em> = (<em>Q</em>, Σ , <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> met
+</dd>
+</dl>
+<ul>
+<li>Q een eindige verzameling, we noemen de elementen van Q de toestanden van de automaat A.</li>
+<li><span class="math"><em>F</em> ⊆ <em>Q</em></span> is de verzameling van de aanvaardbare eindtoestanden.</li>
+<li><span class="math"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> deze toestand wordt de begintoestand genoemd</li>
+<li><span class="math">Σ </span> een alfabet</li>
+<li><span class="math"><em>δ</em></span> een afbeelding, de transitieafbeelding genoemd.</li>
+</ul>
+<h3 id="eindige-automaten-en-reguliere-talen"><a href="#eindige-automaten-en-reguliere-talen"><span class="header-section-number">3.2.2</span> Eindige automaten en reguliere talen</a></h3>
+<dl>
+<dt>taal bepaald door eindige automaat</dt>
+<dd>als <span class="math"><em>A</em> = (<em>Q</em>, Σ , <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> een eindige automaat is, noemen we <br /><span class="math"><em>L</em>(<em>A</em>) = {<em>x</em> ∈ Σ <sup> * </sup>∣<em>δ</em><sup> * </sup>(<em>q</em><sub>0</sub>, <em>x</em>) ∈ <em>F</em>}</span><br /> de taal bepaald door de eindige automaat. Voor een gegeven taal <span class="math"><em>L</em> ⊆ Σ <sup> * </sup></span> zeggen we dat A de taal herkent als <span class="math"><em>L</em> = <em>L</em>(<em>A</em>)</span>.
+</dd>
+</dl>
+<h3 id="niet-deterministische-automaten"><a href="#niet-deterministische-automaten"><span class="header-section-number">3.2.3</span> Niet-deterministische automaten</a></h3>
+<dl>
+<dt>niet-deterministische, eindige automaat</dt>
+<dd>Een niet-deterministische eindige automaat is een vijftal <span class="math"><em>A</em> = 9<em>Q</em>, Σ , <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> met
+</dd>
+</dl>
+<ul>
+<li>Q een eindige verzameling (de toestanden van de automaat A)</li>
+<li><span class="math"><em>F</em> ⊆ <em>Q</em></span> de verzameling van aanvaarde eindtoestanden</li>
+<li><span class="math"><em>q</em><sub>0</sub></span> de begintoestand van de automaat</li>
+<li><span class="math">Σ </span> het alfabet van de automaat</li>
+<li><span class="math"><em>δ</em></span> een afbeelding <span class="math"><em>δ</em>: <em>Q</em> × (Σ  ∪ {<em>λ</em>} → <em>P</em>(<em>Q</em>))</span></li>
+</ul>
+<dl>
+<dt>taal bepaald door niet-deterministische eindige automaat</dt>
+<dd>als <span class="math"><em>A</em> = (<em>Q</em>, Σ , <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> een niet-deterministische eindige automaat is, noemen we <br /><span class="math"><em>L</em>(<em>A</em>) = {<em>x</em> ∈ Σ <sup> * </sup>∣<em>δ</em><sup> * </sup>(<em>q</em><sub>0</sub>, <em>x</em>) ∩ <em>F</em> ≠ ∅}</span><br /> de taal bepaald door de eindige automaat. Voor een gegeven taal <span class="math"><em>L</em> ⊆ Σ <sup> * </sup></span> zeggen we dat A de taal herkent als <span class="math"><em>L</em> = <em>L</em>(<em>A</em>)</span>.
+</dd>
+</dl>
+<h2 id="turingmachines"><a href="#turingmachines"><span class="header-section-number">3.3</span> Turingmachines</a></h2>
+<h3 id="turingmachines-1"><a href="#turingmachines-1"><span class="header-section-number">3.3.1</span> Turingmachines</a></h3>
+<dl>
+<dt>Turingmachine</dt>
+<dd>een turingmachine is een zestal <span class="math"><em>M</em> = (<em>Q</em>, Σ , <em>T</em>, <em>P</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> met
+</dd>
+</dl>
+<ul>
+<li>Q een eindige verzameling, we noemen de elementen van Q toestanden.</li>
+<li><span class="math"><em>F</em> ⊂ <em>Q</em></span> de verzameling van aanvaardbare eindtoestanden</li>
+<li><span class="math"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> de begintoestand</li>
+<li><span class="math">Σ </span> het alfabet van de turingmachine. Dit alfabet bevat naast andere symbolen minstens een speciaal symbool: het blanco of lege symbool, genoteerd met #.</li>
+<li><span class="math"><em>T</em> ⊆ Σ  ∖ {#}</span> is de verzameling invoersymbolen. De elementen van <span class="math">Σ  ∖ (<em>T</em> ∪ {#})</span> worden hulpsymbolen genoemd.</li>
+<li>P een functie <span class="math"><em>P</em>: (<em>Q</em> ∖ <em>F</em>) × Σ  → <em>Q</em> × Σ  × {<em>L</em>, <em>R</em>, 0}</span>. P wordt het programma of de instructieset van de turingmachine genoemd. (in de verzameling {L,R,0} staat L voor links, R voor rechts en 0 voor blijf staan, waarmee de beweging van de schrijfkop wordt aangegeven.)</li>
+</ul>
+<h3 id="turingmachines-en-functies"><a href="#turingmachines-en-functies"><span class="header-section-number">3.3.2</span> Turingmachines en functies</a></h3>
+<h3 id="turingmachines-en-talen"><a href="#turingmachines-en-talen"><span class="header-section-number">3.3.3</span> Turingmachines en talen</a></h3>
+<dl>
+<dt>taal bepaald door een turingmachine</dt>
+<dd><p>De taal bepaald door een turingmachine M, genoteerd <span class="math"><em>l</em>(<em>M</em>)</span>, is de verzameling van alle invoerstrings waarvoor M in een aanvaardbare toestand eindigt. Gegeven een taal L zeggen we dat L herkend wordt door M als <span class="math"><em>L</em> = <em>L</em>(<em>M</em>)</span></p>
+</dd>
+<dt>turing-herkenbaar</dt>
+<dd><p>Een taal L wordt turing-herkenbaar genoemd als er een turingmachine is die L herkent. Turing-herkenbare talen worden ook recursief opsombare talen genoemd.</p>
+</dd>
+<dt>beslissen van een taal</dt>
+<dd><p>Een turingmachine beslist een taal als voor elke string <span class="math"><em>s</em> ∈ <em>L</em></span> de turingmachine stopt in een aanvaardbare toestand, en voor elke string <span class="math">$s \notin L$</span> de turingmachine stopt in een onaanvaardbare toestand.</p>
+</dd>
+<dt>turingbeslisbaar</dt>
+<dd><p>Een taal wordt turing-beslistbaar, of kortweg beslisbaar genoemd als er een turingmachine bestaat die L beslist. Turing-beslisbare talen worden ook wel recursieve talen genoemd.</p>
+</dd>
+</dl>
+<h3 id="niet-deterministische-turing-machines"><a href="#niet-deterministische-turing-machines"><span class="header-section-number">3.3.4</span> Niet-deterministische turing-machines</a></h3>
+<dl>
+<dt>niet-determinisische turingmachine</dt>
+<dd>Een niet-deterministische turingmachine M bestaat uit een zestal <span class="math"><em>M</em> = (<em>Q</em>, Σ , <em>T</em>, <em>P</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span> dat aan dezelfde voorwaardes voldoet als die voor een deterministische turingmachine, alleen moet P geen functie meer zijn. P is een relatie tussen <span class="math">(<em>q</em> ∖ <em>F</em>) × Σ </span> en <span class="math"><em>Q</em> × Σ  × {<em>L</em>, <em>R</em>, 0}</span>
+</dd>
+</dl>
+<h2 id="analyse-van-algoritmen"><a href="#analyse-van-algoritmen"><span class="header-section-number">3.4</span> analyse van algoritmen</a></h2>
+<h3 id="tijdscomplexiteit-van-algoritmen"><a href="#tijdscomplexiteit-van-algoritmen"><span class="header-section-number">3.4.1</span> tijdscomplexiteit van algoritmen</a></h3>
+<dl>
+<dt>tijdscomplexiteit</dt>
+<dd><p>de tijdscomplexiteit van een bepaald algoritme A is een functie <span class="math"><em>t</em><em>i</em><em>j</em><em>d</em><sub><em>A</em></sub>(<em>n</em>): N → N</span> die voor een gegeven invoeromvang <span class="math"><em>n</em></span> het maximum aantal elementaire bewerkingen aangeeft die door het algoritme A bij een invoer van grootte n zullen worden uitgevoerd.</p>
+</dd>
+<dt>de O-notatie</dt>
+<dd><p>indien <span class="math"><em>f</em></span> en <span class="math"><em>g</em></span> functies zijn van <span class="math"><em>m</em><em>a</em><em>t</em><em>h</em><em>b</em><em>b</em><em>N</em></span> naar <span class="math">R<sup> + </sup></span>, dan zeggen we <span class="math"><em>f</em>(<em>n</em>)</span> is <span class="math"><em>O</em>(<em>g</em>(<em>n</em>))</span> of <span class="math"><em>f</em></span> is <span class="math"><em>O</em>(<em>g</em>)</span> als <br /><span class="math">∃ <em>c</em> ∈ R<sub>0</sub><sup> + </sup>, ∃ <em>N</em> ∈ N, ∀ <em>n</em> ∈ N: <em>n</em> ≥ <em>N</em> ⇒ <em>f</em>(<em>n</em>) ≤ <em>c</em><em>g</em>(<em>n</em>)</span><br /></p>
+</dd>
+</dl>
+<h3 id="het-bepalen-van-complexiteit-in-enkele-voorbeelden"><a href="#het-bepalen-van-complexiteit-in-enkele-voorbeelden"><span class="header-section-number">3.4.2</span> het bepalen van complexiteit in enkele voorbeelden</a></h3>
+<h2 id="complexiteitsklassen-van-beslissingsproblemen"><a href="#complexiteitsklassen-van-beslissingsproblemen"><span class="header-section-number">3.5</span> complexiteitsklassen van beslissingsproblemen</a></h2>
+<h3 id="de-klassen-p-en-np"><a href="#de-klassen-p-en-np"><span class="header-section-number">3.5.1</span> de klassen P en NP</a></h3>
+<h4 id="turingmachines-en-de-klasse-p"><a href="#turingmachines-en-de-klasse-p"><span class="header-section-number">3.5.1.1</span> turingmachines en de klasse P</a></h4>
+<dl>
+<dt>polynomiale beslisbaarheid</dt>
+<dd><p>een taal L wordt in polynomiale tijd beslist door een turingmachine M indien er een <span class="math"><em>k</em> ∈ N</span> bestaat zodat M voor elke invoersstring s beslist of <span class="math"><em>s</em> ∈ <em>L</em></span> in een aantal stappen dat <span class="math"><em>O</em>(<em>n</em><sup><em>k</em></sup>)</span> is met <span class="math"><em>n</em> = ∣<em>s</em>∣</span>. Een taal is polynomiaal beslisbaar als er een turingmachine bestaat die de taal in polynomiale tijd beslist</p>
+</dd>
+<dt>de klasse P</dt>
+<dd><p>men duidt met P de klasse aan van alle talen waarvoor geldt dat er een turingmachine bestaat die die taal in polynomiale tijd beslist.</p>
+</dd>
+</dl>
+<h4 id="niet-deterministische-turingmachines-en-de-klasse-np"><a href="#niet-deterministische-turingmachines-en-de-klasse-np"><span class="header-section-number">3.5.1.2</span> Niet-deterministische turingmachines en de klasse NP</a></h4>
+<dl>
+<dt>tijdscomplexiteit van een niet-deterministische turing-machine</dt>
+<dd>de tijdscomplexiteit <span class="math"><em>t</em><em>i</em><em>j</em><em>d</em><sub><em>M</em></sub>: N → R<sup> + </sup></span> voor een NDTM wordt gedefinieerd als
+</dd>
+</dl>
+<p><br /><span class="math">$$tijd_M = \begin{cases}
+0 indien er geen enkele string van lengte n wordt aanvaard\\
+max \{m | er bestaat een string x \in T^*, van lengte n die in m stappen aanvaard wordt door M.\}
+\end{cases}$$</span><br /></p>
+<dl>
+<dt>NDTM van polynomiale tijd</dt>
+<dd><p>een niet-deterministische Turingmachine M heet van polynomiale tijd te zij als en slechts als <span class="math"><em>t</em><em>i</em><em>j</em><em>d</em><sub><em>m</em></sub>(<em>n</em>)<em>O</em>(<em>n</em><sup><em>k</em></sup>)</span> is, voor een <span class="math"><em>k</em> ∈ N</span>.</p>
+</dd>
+<dt>niet-deterministisch polynomiaal herkenbaar</dt>
+<dd><p>een taal L wordt herkend in polynomiale tijd door een NDTM indien M L herkent en M van polynomiale tijd is. een taal L is niet-deterministisch polynomiaal herkenbaar als er een NDTM bestaat die L herkent in polynomiale tijd.</p>
+</dd>
+<dt>de klasse NP</dt>
+<dd><p>Men duidt met NP de klasse aan van alle talen die beslisbaar en niet-deterministisch polynomiaal herkenbaar zijn.</p>
+</dd>
+</dl>
+<h4 id="polynomiale-verifieerbaarheid"><a href="#polynomiale-verifieerbaarheid"><span class="header-section-number">3.5.1.3</span> Polynomiale verifieerbaarheid</a></h4>
+<dl>
+<dt>polynomiaal verifieerbaar</dt>
+<dd><p>een taal L is polynomiaal verifieerbaar als en slechts als er een TM bestaat zodat voor elke string s een andere string c, een zogenaamd certificaat, bestaat zodat geldt: M aanvaardt de string (c,s) in een tijd polynomiaal is -s- als en slechts als <span class="math"><em>s</em> ∈ <em>L</em></span>.</p>
+</dd>
+<dt>de klasse NP (alternatieve definitie)</dt>
+<dd><p>Men duidt met NP de klasse aan van polynomiaal verifieerbare talen.</p>
+</dd>
+</dl>
+<h3 id="de-klasse-np-compleet"><a href="#de-klasse-np-compleet"><span class="header-section-number">3.5.2</span> De klasse NP-compleet</a></h3>
+<dl>
+<dt>polynomiale transformatie van een taal</dt>
+<dd>Zij gegeven twee talen <span class="math"><em>L</em><sub>1</sub> ⊆ <em>T</em><sub>1</sub><sup> * </sup></span> (op een alfabet <span class="math"><em>T</em><sub>1</sub></span>)en <span class="math"><em>L</em>2 ⊆ <em>T</em><sub>2</sub><sup> * </sup></span> (op een alfabet T2). We zeggen dat <span class="math"><em>l</em><sub>1</sub></span> polynomiaal transformeerbaar is in <span class="math"><em>l</em><sub>2</sub></span> indien er een afbeelding <span class="math"><em>f</em>: <em>T</em><sub>1</sub><sup> * </sup> → <em>T</em><sub>2</sub><sup> * </sup></span> bestaat waarvoor de volgende twee zaken gelden
+</dd>
+</dl>
+<ul>
+<li><span class="math">∀ <em>x</em> ∈ <em>T</em><sub>1</sub><sup> * </sup>: <em>x</em> ∈ <em>L</em><sub>1</sub> ⇔ <em>f</em>(<em>x</em>) ∈ <em>L</em><sub>2</sub></span></li>
+<li>Er bestaat een deterministische turing-machine die <span class="math"><em>f</em></span> in polynomiale tijd berekent.</li>
+</ul>
+<dl>
+<dt>polynomiale equivalentie van talen</dt>
+<dd><p>twee talen <span class="math"><em>L</em><sub>1</sub></span> en <span class="math"><em>L</em><sub>2</sub></span> worden polynomiaal equivalent genoemd, notatie <span class="math"><em>L</em><sub>1</sub> ∼ <em>L</em><sub>2</sub></span> indien <span class="math"><em>L</em><sub>1</sub><em>α</em><em>L</em><sub>2</sub></span> en <span class="math"><em>L</em><sub>2</sub><em>α</em><em>L</em><sub>1</sub></span>.</p>
+</dd>
+<dt>de klasse NPC</dt>
+<dd>een taal <span class="math"><em>L</em></span> is NP-compleet als en slechts als
+</dd>
+</dl>
+<ul>
+<li><span class="math"><em>L</em> ∈ <em>N</em><em>P</em></span></li>
+<li>voor elke andere taal <span class="math"><em>L</em>ʹ ∈ <em>N</em><em>P</em></span> geldt dat <span class="math"><em>L</em>ʹ<em>α</em><em>L</em></span>.</li>
+</ul>
+<h3 id="andere-complexiteitsklassen"><a href="#andere-complexiteitsklassen"><span class="header-section-number">3.5.3</span> andere complexiteitsklassen</a></h3>
+<h2 id="besluit"><a href="#besluit"><span class="header-section-number">3.6</span> besluit</a></h2>
+<h1 id="grafentheorie"><a href="#grafentheorie"><span class="header-section-number">4</span> grafentheorie</a></h1>
+<h2 id="inleiding-1"><a href="#inleiding-1"><span class="header-section-number">4.1</span> inleiding</a></h2>
+<h3 id="de-kortste-weg-tussen-twee-adressen"><a href="#de-kortste-weg-tussen-twee-adressen"><span class="header-section-number">4.1.1</span> de kortste weg tussen twee adressen</a></h3>
+<h3 id="de-bruggen-van-koningsberg"><a href="#de-bruggen-van-koningsberg"><span class="header-section-number">4.1.2</span> de bruggen van Koningsberg</a></h3>
+<h3 id="de-boer-de-wolf-de-kool-en-de-geit"><a href="#de-boer-de-wolf-de-kool-en-de-geit"><span class="header-section-number">4.1.3</span> de boer, de wolf, de kool en de geit</a></h3>
+<h3 id="vier-op-een-rij"><a href="#vier-op-een-rij"><span class="header-section-number">4.1.4</span> Vier op een rij</a></h3>
+<h2 id="grafen"><a href="#grafen"><span class="header-section-number">4.2</span> Grafen</a></h2>
+<h3 id="basisdefinities"><a href="#basisdefinities"><span class="header-section-number">4.2.1</span> basisdefinities</a></h3>
+<dl>
+<dt>graaf</dt>
+<dd><p>een graaf is een drietal <span class="math">(<em>V</em>, <em>E</em>, <em>ϕ</em>)</span> met V een verzameling waarvan de elementen knopen genoemd worden; E een verzameling waarvan de elementen bogen genoemd wordenen <span class="math"><em>ϕ</em>: <em>E</em> → <em>M</em><sub>2</sub>(<em>V</em>)</span> een functie die met elke boog twee knopen associeert.</p>
+</dd>
+<dt>lus</dt>
+<dd><p>een lus is een boog <span class="math"><em>e</em></span> waarvoor geldt dat er een <span class="math"><em>v</em> ∈ <em>V</em></span> bestaat zodat <span class="math"><em>ϕ</em>(<em>e</em>) = (<em>v</em>, <em>v</em>)</span>. Met andere woorden een boog die een knoop met zichzelf verbind.</p>
+</dd>
+<dt>parallelle bogen</dt>
+<dd><p>in een graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>, <em>ϕ</em>)</span> noemen ze de bogen <span class="math"><em>e</em><sub>1</sub></span> en <span class="math"><em>e</em><sub>2</sub></span> parallelle bogen als en slechts als <span class="math"><em>ϕ</em>(<em>e</em><sub>1</sub>) = <em>ϕ</em>(<em>e</em><sub>2</sub>)</span>. Met andere woorden twee bogen zijn parallel als ze dezelfde knopen met elkaar verbinden.</p>
+</dd>
+<dt>enkelvoudige graaf</dt>
+<dd><p>een enkelvoudige graaf is een graaf die noch lussen noch bogen bevat.</p>
+</dd>
+<dt>graaf(vereenvoudigd)</dt>
+<dd><p>een graaf is een koppel <span class="math">(<em>V</em>, <em>E</em>)</span> met V een verzameling knopen en E een multiverzameling multiparen uit V.</p>
+</dd>
+<dt>graad</dt>
+<dd><p>de graad van een knoop v, genoteerd <span class="math"><em>δ</em>(<em>v</em>)</span> is het aantal bogen dat op v invalt. Een lus telt hierbij voor twee.</p>
+</dd>
+</dl>
+<h3 id="paden"><a href="#paden"><span class="header-section-number">4.2.2</span> paden</a></h3>
+<dl>
+<dt>pad</dt>
+<dd><p>Een pad in een graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> is een rij bogen van de vorm <span class="math">(<em>V</em><sub>0</sub>, <em>v</em><sub>1</sub>), (<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>), . . . , (<em>v</em><sub><em>n</em> − 1</sub><em>v</em><sub><em>n</em></sub>)</span> waarbij <span class="math">∀ <em>i</em>: (<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em> + 1</sub>) ∈ <em>E</em></span></p>
+</dd>
+<dt>enkelvoudig pad</dt>
+<dd><p>een enkelvoudig pad is een pad <span class="math">(<em>v</em><sub>0</sub>, <em>v</em><sub>1</sub>, . . . , <em>v</em><sub><em>n</em></sub>)</span> waarvan alle knopen verschillend zijn, dit wil zeggen : <span class="math">∀ <em>i</em>, <em>j</em>: <em>i</em> ≠ <em>j</em> ⇒ <em>v</em><sub><em>i</em></sub> ≠ <em>v</em><sub><em>j</em></sub></span>.</p>
+</dd>
+<dt>kring, enkelvoudige kring</dt>
+<dd><p>Een kring is een pad <span class="math">(<em>V</em><sub>0</sub>, <em>v</em><sub>1</sub>), (<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>), . . . , (<em>v</em><sub><em>n</em> − 1</sub><em>v</em><sub><em>n</em></sub>)</span> waarin alle bogen verschillend zijn, en waarin <span class="math"><em>v</em><sub>0</sub> = <em>v</em><sub><em>n</em></sub></span>. Een enkelvoudige kring is een kring waarin ook alle knopen verschillend zijn, afgezien van <span class="math"><em>v</em><sub>0</sub> = <em>v</em><sub><em>n</em></sub></span>.</p>
+</dd>
+<dt>samenhangende graaf</dt>
+<dd><p>een graaf is samenhangend als en slechts als tussen elke twee knopen een pad bestaat.</p>
+</dd>
+<dt>Hamiltoniaans pad, hamiltoniaanse kring</dt>
+<dd><p>Zij gegeven een graaf G. Een hamiltoniaans pad van G is een pad waarin elke knoop van G precies een keer voorkomt. Een hamiltoniaanse kring van G is een enkelvoudige kring waarin elke knoop van G voorkomt.</p>
+</dd>
+<dt>euleriaans pad, euleriaanse kring</dt>
+<dd><p>Zij gegeven een graaf G. Een euleriaans pad is een waarin elke knoop van G minstens 1 keer voorkomt en elke boog van G precies 1 keer voorkomt. Een euleriaanse kring van G is een Euleriaans pad dat ook een kring is.</p>
+</dd>
+</dl>
+<h3 id="deelgrafen-en-componenten"><a href="#deelgrafen-en-componenten"><span class="header-section-number">4.2.3</span> deelgrafen en componenten</a></h3>
+<dl>
+<dt>deelgraaf</dt>
+<dd><p>een graaf <span class="math"><em>G</em>ʹ(<em>V</em>ʹ, <em>E</em>ʹ)</span> is een deelgraaf van een graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> genoteerd <span class="math"><em>G</em>ʹ ⊆ <em>G</em></span> als en slechts als <span class="math"><em>V</em>ʹ ⊆ <em>V</em></span> en <span class="math"><em>E</em>ʹ ⊆ <em>E</em></span>.</p>
+</dd>
+<dt>geinduceerde deelgraaf</dt>
+<dd><p>gegeven een graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> en een deelverzameling <span class="math"><em>V</em>ʹ ⊆ <em>V</em></span> noemen we <span class="math"><em>G</em>ʹ(<em>V</em>ʹ, <em>E</em>ʹ)</span> de deelgraaf van G geinduceerd door V’ als en slechts als <span class="math"><em>E</em>ʹ = {(<em>v</em>, <em>w</em>) ∈ <em>E</em>∣(<em>v</em>, <em>w</em>) ∈ <em>V</em>ʹ}</span></p>
+</dd>
+<dt>component</dt>
+<dd><p>een graaf <span class="math"><em>G</em>(<em>v</em>, <em>E</em>)</span> is een component van een graaf <span class="math"><em>G</em>ʹ(<em>V</em>ʹ, <em>E</em>ʹ)</span> als en slechts als <span class="math"><em>G</em> ⊂ <em>G</em>ʹ, <em>G</em></span> is niet leeg, G is samenhangend, en er bestaat geen samenhangende graaf <span class="math">$G&quot;$</span> waarvoor <span class="math">$G\subset G&quot;\subseteq G'$</span></p>
+</dd>
+</dl>
+<h3 id="gerichte-grafen"><a href="#gerichte-grafen"><span class="header-section-number">4.2.4</span> Gerichte grafen</a></h3>
+<dl>
+<dt>gerichte graaf</dt>
+<dd><p>een gerichte graaf is een koppel (V,E) met V een verzameling waarvan de elementen knopen genoemd worden en <span class="math"><em>E</em> ⊆ <em>V</em><sup>2</sup></span> een verzameling koppels</p>
+</dd>
+<dt>gericht pad, ongericht pad</dt>
+<dd><p>een gericht pad in een gerichte graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> is een pad <span class="math">(<em>v</em><sub>0</sub>, <em>v</em><sub>1</sub>, . . . , <em>v</em><sub><em>n</em></sub>)</span> met <span class="math">∀ <em>i</em>: (<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em> + 1</sub>) ∈ <em>E</em></span>. Een ongericht pad is een pad <span class="math">(<em>v</em><sub>0</sub>, <em>v</em><sub>1</sub>, . . . , <em>v</em><sub><em>n</em></sub>)</span> met <span class="math">∀ <em>i</em>: (<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em> + 1</sub>) ∈ <em>V</em> ∨ (<em>v</em><sub><em>i</em> + 1</sub>, <em>v</em><sub><em>i</em></sub>) ∈ <em>E</em></span></p>
+</dd>
+</dl>
+<h2 id="voorstelling-van-grafen"><a href="#voorstelling-van-grafen"><span class="header-section-number">4.3</span> voorstelling van grafen</a></h2>
+<h3 id="buurmatrix"><a href="#buurmatrix"><span class="header-section-number">4.3.1</span> buurmatrix</a></h3>
+<dl>
+<dt>buurmatrix</dt>
+<dd>Gegeven een enkelvoudige graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span>, met <span class="math"><em>V</em> = {<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>, . . . , <em>v</em><sub><em>n</em></sub>}</span> is de buurmatrix van <span class="math"><em>G</em></span> een <span class="math"><em>n</em> × <em>n</em></span> matrix <span class="math"><em>A</em></span> met <span class="math"><em>A</em><sub><em>i</em><em>j</em></sub> = 1 ⇔ (<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>j</em></sub>) ∈ <em>E</em></span>, en <span class="math">$A_{ij}=0 \Leftrightarrow (v_i, v_j) \notin E$</span>
+</dd>
+</dl>
+<h3 id="booleaanse-buurmatrix"><a href="#booleaanse-buurmatrix"><span class="header-section-number">4.3.2</span> booleaanse buurmatrix</a></h3>
+<dl>
+<dt>booleaanse buurmatrix</dt>
+<dd>Gegeven een enkelvoudige graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met <span class="math"><em>V</em> = {<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>, . . . , <em>v</em><sub><em>n</em></sub>}</span> is de booleaanse buurmatrix van <span class="math"><em>G</em></span> een <span class="math"><em>n</em> × <em>n</em></span> matrix <span class="math"><em>B</em></span> met <span class="math"><em>B</em><sub><em>i</em><em>j</em></sub> = ((<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>j</em></sub>) ∈ <em>E</em>)</span>
+</dd>
+</dl>
+<h3 id="incidentiematrix"><a href="#incidentiematrix"><span class="header-section-number">4.3.3</span> incidentiematrix</a></h3>
+<dl>
+<dt>incidentiematrix</dt>
+<dd>gegeven een enkelvoudige graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met <span class="math"><em>V</em> = {<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>, . . . , <em>v</em><sub><em>n</em></sub>}</span> en <span class="math"><em>E</em> = {<em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, <em>e</em><sub><em>n</em></sub>}</span> is de incidentiematrix van <span class="math"><em>G</em></span> een <span class="math"><em>n</em> × <em>m</em></span> matrix <span class="math"><em>A</em></span> met <span class="math"><em>A</em><sub><em>i</em><em>j</em></sub> = 1</span> als <span class="math"><em>e</em><sub><em>j</em></sub></span> invalt op <span class="math"><em>v</em><sub><em>i</em></sub></span> en <span class="math"><em>A</em><sub><em>i</em><em>j</em></sub> = 0</span> in alle andere gevallen.
+</dd>
+</dl>
+<h2 id="isomorfisme-van-grafen"><a href="#isomorfisme-van-grafen"><span class="header-section-number">4.4</span> isomorfisme van grafen</a></h2>
+<dl>
+<dt>grafen-isomorfisme</dt>
+<dd>Twee grafen <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> en <span class="math"><em>G</em>ʹ(<em>V</em>ʹ, <em>E</em>ʹ)</span> zijn isomorf als en slechts als er een bijectie <span class="math"><em>h</em>: <em>V</em> → <em>V</em>ʹ</span> bestaat zodat <span class="math">{<em>h</em>(<em>x</em>)∣<em>x</em> ∈ <em>V</em>} = <em>V</em>ʹ</span> en <span class="math">{<em>h</em>(<em>x</em>), <em>h</em>(<em>y</em>)∣(<em>x</em>, <em>y</em>) ∈ <em>E</em>} = <em>E</em>ʹ</span>
+</dd>
+</dl>
+<h2 id="gewogen-grafen"><a href="#gewogen-grafen"><span class="header-section-number">4.5</span> gewogen grafen</a></h2>
+<h3 id="kortste-pad-algoritme-van-dijkstra"><a href="#kortste-pad-algoritme-van-dijkstra"><span class="header-section-number">4.5.1</span> kortste pad algoritme van Dijkstra</a></h3>
+<h3 id="dijkstra-versie-1"><a href="#dijkstra-versie-1"><span class="header-section-number">4.5.2</span> Dijkstra, versie 1</a></h3>
+<h3 id="dijkstra-versie-2"><a href="#dijkstra-versie-2"><span class="header-section-number">4.5.3</span> dijkstra versie 2</a></h3>
+<h3 id="complexiteit-van-dijkstras-algoritme"><a href="#complexiteit-van-dijkstras-algoritme"><span class="header-section-number">4.5.4</span> complexiteit van Dijkstra’s algoritme</a></h3>
+<h2 id="bijzondere-klassen-van-grafen"><a href="#bijzondere-klassen-van-grafen"><span class="header-section-number">4.6</span> bijzondere klassen van grafen</a></h2>
+<h2 id="vlakke-grafen"><a href="#vlakke-grafen"><span class="header-section-number">4.7</span> vlakke grafen</a></h2>
+<dl>
+<dt>vlakke graaf</dt>
+<dd>een vlakke graaf is een graaf die getekend kan worden zonder snijdende bogen
+</dd>
+</dl>
+<h3 id="de-formule-van-euler"><a href="#de-formule-van-euler"><span class="header-section-number">4.7.1</span> de formule van Euler</a></h3>
+<h3 id="karakterisatie-van-vlakke-grafen"><a href="#karakterisatie-van-vlakke-grafen"><span class="header-section-number">4.7.2</span> karakterisatie van vlakke grafen</a></h3>
+<dl>
+<dt><span class="math">(<em>β</em>, <em>B</em>)</span></dt>
+<dd>Gegeven een vlakke graaf G noteren we het aantal bogen waardoor een zijvlak z begrensd wordt als <span class="math"><em>β</em>(<em>z</em>)</span>. De som van <span class="math"><em>β</em>(<em>z</em>)</span> voor alle zijvlakken <span class="math"><em>Z</em></span> wordt <span class="math"><em>B</em></span> genoteerd. <span class="math"><em>B</em> = Σ <sub><em>z</em> ∈ <em>Z</em></sub><em>β</em>(<em>z</em>)</span>, met Z de verzameling zijvlakken van de graaf.
+</dd>
+</dl>
+<h3 id="duale-grafen"><a href="#duale-grafen"><span class="header-section-number">4.7.3</span> duale grafen</a></h3>
+<dl>
+<dt>duale graaf</dt>
+<dd>Zij G een graaf met <span class="math"><em>v</em></span> knopen, <span class="math"><em>e</em></span> knopen en <span class="math"><em>f</em></span> zijvlakken. De duale graaf <span class="math"><em>G</em>ʹ</span> heeft 1 knoop voor elk zijvlak van <span class="math"><em>G</em></span>, dus <span class="math"><em>v</em>ʹ = <em>f</em></span> knopen. Voor elke boog tussen de oorspronkelijke zijvlakken is er een boog tussen de overeenkomstige knopen in de duale graaf.
+</dd>
+</dl>
+<h2 id="kleuring-van-grafen"><a href="#kleuring-van-grafen"><span class="header-section-number">4.8</span> kleuring van grafen</a></h2>
+<dl>
+<dt>kleuring</dt>
+<dd>Met een kleuring van een graaf <span class="math">(<em>V</em>, <em>E</em>)</span> bedoelt men een toekenning van een kleur aan elke <span class="math"><em>v</em> ∈ <em>V</em></span> zodanig dat de kleur van <span class="math"><em>v</em></span> naar <span class="math"><em>w</em></span> verschilt indine <span class="math">(<em>v</em>, <em>W</em>) ∈ <em>E</em></span>. een n-kleuring is een kleuring met <span class="math"><em>n</em></span> of minder verschillende kleuren. Een minimale kleuring is een n-kleuring met minimale <span class="math"><em>n</em></span>.
+</dd>
+</dl>
+<h2 id="bomen"><a href="#bomen"><span class="header-section-number">4.9</span> bomen</a></h2>
+<h3 id="opspannende-bomen"><a href="#opspannende-bomen"><span class="header-section-number">4.9.1</span> opspannende bomen</a></h3>
+<dl>
+<dt>opspannende boom</dt>
+<dd><span class="math"><em>T</em>(<em>V</em><sub><em>T</em></sub>, <em>E</em><sub><em>T</em></sub>)</span> is een opspannende boom voor <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> als en slechts als <span class="math"><em>T</em></span> een boom is, <span class="math"><em>V</em><sub><em>T</em></sub> = <em>V</em></span> en <span class="math"><em>E</em><sub><em>T</em></sub> ⊆ <em>E</em></span>
+</dd>
+</dl>
+<h3 id="minimaal-opspannende-bomen"><a href="#minimaal-opspannende-bomen"><span class="header-section-number">4.9.2</span> minimaal opspannende bomen</a></h3>
+<dl>
+<dt>minimaal opspannende boom</dt>
+<dd>een minimaal opspannende boom van een gewogen graaf <span class="math"><em>G</em></span> is een opspannende boom van <span class="math"><em>G</em></span> waarvoor geldt dat er geen andere opspannende boom is met een kleiner gewicht.
+</dd>
+</dl>
+<h2 id="gewortelde-bomen"><a href="#gewortelde-bomen"><span class="header-section-number">4.10</span> gewortelde bomen</a></h2>
+<dl>
+<dt>gewortelde boom</dt>
+<dd>een gewortelde boom is een boom waarin een willekeurige knoop wordt aangeduid als de wortel
+</dd>
+</dl>
+<h3 id="binaire-bomen"><a href="#binaire-bomen"><span class="header-section-number">4.10.1</span> binaire bomen</a></h3>
+<h3 id="zoekbomen"><a href="#zoekbomen"><span class="header-section-number">4.10.2</span> zoekbomen</a></h3>
+<dl>
+<dt>binaire zoekboom</dt>
+<dd>een binaire zoekboom is een binaire boom waarin met elke knoop <span class="math"><em>v</em></span> een waarde <span class="math"><em>w</em>(<em>v</em>)</span> is geassocieerd (bv. een getal) zodanig dat als <span class="math"><em>l</em></span> behoort tot de linker en <span class="math"><em>r</em></span> tot de rechterdeelboom van <span class="math"><em>v</em></span>, dat dan <span class="math"><em>w</em>(<em>l</em>) &lt; <em>w</em>(<em>v</em>) &lt; <em>w</em>(<em>r</em>)</span>
+</dd>
+</dl>
+<h3 id="praktische-voorstelling-van-bomen"><a href="#praktische-voorstelling-van-bomen"><span class="header-section-number">4.10.3</span> Praktische voorstelling van bomen</a></h3>
+<h4 id="voorstelling-van-gewortelde-bomen-in-computerprogrammas"><a href="#voorstelling-van-gewortelde-bomen-in-computerprogrammas"><span class="header-section-number">4.10.3.1</span> Voorstelling van gewortelde bomen in computerprogramma’s</a></h4>
+<h3 id="het-doorlopen-van-gewortelde-bomen"><a href="#het-doorlopen-van-gewortelde-bomen"><span class="header-section-number">4.10.4</span> Het doorlopen van gewortelde bomen</a></h3>
+<h4 id="het-volledig-doorlopen-van-een-gewortelde-boom"><a href="#het-volledig-doorlopen-van-een-gewortelde-boom"><span class="header-section-number">4.10.4.1</span> Het volledig doorlopen van een gewortelde boom</a></h4>
+<h4 id="diepte-eerst-en-breedte-eerst-doorlopen"><a href="#diepte-eerst-en-breedte-eerst-doorlopen"><span class="header-section-number">4.10.4.2</span> Diepte-eerst en breedte-eerst doorlopen</a></h4>
+<h3 id="spelbomen"><a href="#spelbomen"><span class="header-section-number">4.10.5</span> Spelbomen</a></h3>
+<h2 id="netwerkmodellen-en-petri-netten"><a href="#netwerkmodellen-en-petri-netten"><span class="header-section-number">4.11</span> Netwerkmodellen en petri-netten</a></h2>
+<h3 id="transportmodel"><a href="#transportmodel"><span class="header-section-number">4.11.1</span> Transportmodel</a></h3>
+<dl>
+<dt>transportnetwerk</dt>
+<dd>een transportnetwerk(of simpelweg een netwerk) is een enkelvoudige gewogen, gerichte graaf die voldoet aan:
+</dd>
+</dl>
+<ul>
+<li>er is juist één knoop in G zonder binnenkomende bogen, deze knoop wordt de bron genoemd.</li>
+<li>er is juist één knoop in G zonder buitengaande bogen, deze knoop wordt de put genoemd.</li>
+<li>het gewicht <span class="math"><em>c</em><sub><em>i</em>, <em>j</em></sub></span> van de gerichte boog <span class="math">(<em>i</em>, <em>j</em>)</span> is positief en wordt de capaciteit van de boog genoemd.</li>
+<li>G is samenhangend.</li>
+</ul>
+<dl>
+<dt>stroming</dt>
+<dd>Voor een netwerk <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met capaciteiten <span class="math"><em>C</em><sub><em>i</em>, <em>j</em></sub>, <em>i</em>, <em>j</em> ∈ <em>V</em></span> is F een stroming als F een afbeelding is van E naar <span class="math">R<sup> + </sup></span> zodanig dat
+</dd>
+</dl>
+<ul>
+<li><span class="math"><em>F</em>(<em>i</em>, <em>j</em>) ≤ <em>c</em><sub><em>i</em>, <em>j</em></sub></span></li>
+<li><p>voor elke knoop <span class="math"><em>j</em></span>die niet de bron of de put is geldt <span class="math">$\sum\limits_{i \in V} {F(i,j)} = \sum\limits_{i \in V} {j, i}$</span>.</p>
+<p>We noemen <span class="math"><em>F</em>(<em>i</em>, <em>j</em>)</span> de stroming in een boog <span class="math">(<em>i</em>, <em>j</em>)</span>. Voor een knoop <span class="math"><em>j</em></span> noemen we <span class="math">$\sum\limits_{i \in v} {F(i,j)}$</span> de stroming naar of in <span class="math"><em>j</em></span> en <span class="math">$\sum\limits_{i \in v} {F(j,i)}$</span> de stroming van of uit <span class="math"><em>j</em></span>.</p></li>
+</ul>
+<dl>
+<dt>grootte van een stroming</dt>
+<dd>de grootte van een stroming F in een netwerk <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met bron <span class="math"><em>a</em></span> en put <span class="math"><em>z</em></span> is gedefinieerd door <span class="math">$\sum\limits_{i \in V} F(a,i)$</span> of <span class="math">$\sum\limits_{i \in V} F(i, z)$</span>
+</dd>
+</dl>
+<h3 id="maximale-stroming"><a href="#maximale-stroming"><span class="header-section-number">4.11.2</span> Maximale stroming</a></h3>
+<dl>
+<dt>goede/slechte boog</dt>
+<dd><p>in een gerichte graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met met pad <span class="math">(<em>v</em><sub>1</sub>, <em>v</em><sub>2</sub>, . . . , <em>v</em><sub><em>n</em></sub>)</span> noemen we een boog <span class="math">(<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em> + 1</sub>)</span> goed (gericht) indien <span class="math">(<em>v</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em> + 1</sub>) ∈ <em>E</em></span> en anders slecht gericht.</p>
+</dd>
+<dt>snede</dt>
+<dd><p>een snsede van een netwerk <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> met bron <span class="math"><em>a</em></span> en put <span class="math"><em>z</em></span>is een tweetal <span class="math">(<em>P</em>, <em>P̄</em>)</span> zodanig dat <span class="math"><em>a</em> ∈ <em>P</em>, <em>z</em> ∈ <em>P̄</em>, <em>P</em> ∪ <em>P̄</em> = <em>V</em></span> en <span class="math"><em>P</em> ∩ <em>P̄</em> = ∅</span></p>
+</dd>
+<dt>capaciteit van een snede</dt>
+<dd><p>de capaciteit van een snede <span class="math">(<em>p</em>, <em>P̄</em>)</span> is <span class="math">$C(P, \bar{P}) = \sum\limits_{i\in P} {\sum\limits_{j \in \bar{P}} {C_{(i,j)}}}$</span>.</p>
+</dd>
+<dt>Max flow, min cut</dt>
+<dd><p>Voor een snede<span class="math">(<em>P</em>, <em>P̄</em>)</span> en stroming <span class="math"><em>F</em></span> in een net <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> geldt dat als <span class="math"><em>C</em>(<em>P</em>, <em>P̄</em>) = <em>F</em></span>, dan is de stroming maximaal en de snede minimaal.</p>
+</dd>
+</dl>
+<h3 id="matching"><a href="#matching"><span class="header-section-number">4.11.3</span> Matching</a></h3>
+<dl>
+<dt>matching</dt>
+<dd>Voor een gerichte tweeledige graaf <span class="math"><em>G</em>(<em>V</em> ∪ <em>W</em>, <em>E</em>)</span> waarbij <span class="math"><em>V</em> ∩ <em>W</em> = ∅</span> en <span class="math"><em>E</em> ⊆ <em>V</em> × <em>W</em></span> is <span class="math"><em>M</em></span> een overeenkomst of matching indien
+</dd>
+</dl>
+<ul>
+<li><span class="math"><em>M</em> ⊆ <em>E</em></span></li>
+<li><span class="math">∀ (<em>x</em>, <em>y</em>), (<em>i</em>, <em>j</em>) ∈ <em>M</em></span>: indien <span class="math">(<em>i</em>, <em>j</em>) ≠ (<em>x</em>, <em>y</em>)</span> dan is <span class="math"><em>i</em> ≠ <em>x</em></span> en <span class="math"><em>j</em> ≠ <em>y</em></span> (ttz in elke knoop komt hoogstens een boog aan en vertrekt er hoogstens een)</li>
+</ul>
+<dl>
+<dt>maximale matching</dt>
+<dd>een maximale matching heeft een maximaal aantal bogen in M. Een matching is volledig indien <span class="math">∀ <em>v</em> ∈ <em>V</em>, ∃ <em>w</em> ∈ <em>W</em>: (<em>v</em>, <em>w</em>) ∈ <em>M</em></span>
+</dd>
+</dl>
+<h3 id="petrinetten"><a href="#petrinetten"><span class="header-section-number">4.11.4</span> Petrinetten</a></h3>
+<dl>
+<dt>petrinet</dt>
+<dd><p>een petrinet is een enkelvoudige gerichte graaf <span class="math"><em>G</em>(<em>V</em>, <em>E</em>)</span> waarbij <span class="math"><em>V</em> = <em>P</em> ∪ <em>T</em>, <em>P</em> ∩ <em>T</em> = ∅</span> en <span class="math"><em>E</em> ⊆ <em>P</em> × <em>T</em> ∪ <em>T</em> × <em>P</em>; <em>P</em></span> noemen we plaatsen en <span class="math"><em>T</em></span> transities.</p>
+</dd>
+<dt>markering van een petrinet</dt>
+<dd><p>een markering van een petrinet is een toekenning van een natuurlijk getal aan elke plaats van het petrinet.</p>
+</dd>
+<dt>bereikbare markering</dt>
+<dd><p>een markering M’ is bereikbaar vanuit een markering M indien er vertrekkend van M een salvo is dat M’ als resultaat heeft.</p>
+</dd>
+<dt>levende markering</dt>
+<dd><p>Een markering M van een petrinet is levend indien na elk salvo te beginnnen bij M er voor elke transitie t een salvo bestaat zodanig dat na dat salvo t actief wordt</p>
+</dd>
+<dt>begrensde markering</dt>
+<dd><p>een markering M is begrensd indien er een n bestaat zodanig dat bij gelijk welk salvo geen enkele plaats ooit meer dan n tokes bevat. Een begrensde markering waarvoor <span class="math"><em>n</em> = 1</span> wordt een veilige markering genoemd.</p>
+</dd>
+</dl>
+</body>
+</html>
