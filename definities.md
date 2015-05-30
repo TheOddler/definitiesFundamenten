@@ -65,7 +65,7 @@ niet-deterministische, eindige automaat
 - $F \subseteq Q$ de verzameling van aanvaarde eindtoestanden
 - $q_0$ de begintoestand van de automaat
 - $\Sigma$ het alfabet van de automaat
-- $\delta$ een afbeelding $\delta: Q\times(\Sigma \cup \{\lambda \}\rightarrow P(Q))$
+- $\delta$ een afbeelding $\delta: Q\times(\Sigma \cup \{\lambda \})\rightarrow P(Q)$
 
 taal bepaald door niet-deterministische eindige automaat
 :	als $A=(Q, \Sigma, \delta, q_0, F)$ een niet-deterministische eindige automaat is, noemen we $$L(A)=\{x \in \Sigma^* | \delta^*(q_0,x)\cap F \neq \emptyset \}$$ de taal bepaald door de eindige automaat. Voor een gegeven taal $L\subseteq \Sigma^*$ zeggen we dat A de taal herkent als $L=L(A)$.
