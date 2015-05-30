@@ -399,3 +399,59 @@ levende markering
 
 begrensde markering
 :	een markering M is begrensd indien er een n bestaat zodanig dat bij gelijk welk salvo geen enkele plaats ooit meer dan n tokes bevat. Een begrensde markering waarvoor $n=1$ wordt een veilige markering genoemd.
+
+# Vastepuntstheorie
+
+## Orderelaties
+
+### Basisbegrippen
+
+partiele orderelatie
+:	Een relatie R op een verzameling S is een (partiele)orde(relatie) als en slechts als voldaan is aan de volgende drie voorwaarden
+- R is reflexief: $\forall x \in S: xRx$
+- R is antisymmetrisch: $\forall x, y \in S: xRy$ en $yRx \Rightarrow x=y$
+- R is transitief: $\forall x, y, z \in S: xRy$ en $yRz \Rightarrow xRz$
+
+boven -en ondergrens
+:	zij S een verzameling met een partiele orde $leq$
+- $q \in S$ is een bovengrens (of majorant) voor een deel $X\subseteq S \Leftrightarrow \forall x \in X: x \leq a$
+- $b \in S$ is een ondergrens (of minorant) voor een deel $X\subseteq S \Leftrightarrow \forall x \in X: b \leq x$
+
+sup en inf
+:	zij $S, \leq$ een een geordende verzameling $X \subseteq S$
+- $a \in S$ is een kleinste bovengrens van X of een supremum van X, notatie $a = sup(X)$ als en slechts als a een bovengrens is voor X en voor elke bovengrens a' vqn X geldt dat $a\leq a'$
+- $b\in S$ is een grootste ondergrens van X of een infinum van X, notatie $b= inf(X)$ als en slechts als b een ondergrens is voor X en voor elke ondergrens b' van X gelt dat $b\geq b'$
+
+complete tralie
+:	Een partieel geordende verzameling $L, \leq$ is een complete tralie als sup(X) en inf(X) bestaan voor een niet-lege deelverzameling $X\subseteq L$
+
+top-en bodemelement
+:	In een complete tralie $L, \leq$ noemen we
+- $\top$ = topelement = sup(L)
+- $\bot$ = bodemelement = inf(L)
+
+### Monotone en continue afbeeldingen
+
+monotone afbeelding
+:	zij $L, \leq$ een geordende verzameling. Een afbeelding $T: L \rightarrow L$ noemen we monotoon als uit $x \leq y$ volgt dat $T(x) \leq T(Y)$
+
+gerichte verzameling
+:	Beschouw een willekeurige deelverzameling X van een complete tralie $L, \leq$. X is gericht $\Leftrightarrow$ elke eindige deelverzameling van X heeft een bovengrens in X
+
+continue afbeelding
+:	een afbeelding $T: L\rightarrow L$ op een complete tralie $L, \leq$ wordt een continue afbeelding genoemd indien $T(sup(X)) = sup(T(X))$ voor elke gerichte deelverzameling X van L.$(T(X)= \{t(x)| x\in X\})$
+
+## De stellingen van Tarski en Kleene
+
+### de stelling van Tarski
+
+vaste punten
+:	zij $L, \leq$ een complete tralie en beschouw afbeelding $T: L\rightarrow L$
+- we noemen $a \in L$ een vast punt voor T als $T(a) = a$
+- een kleinste vast punt voor T is een vast punt a voor T zodat elk ander vast punt b voor T geldt dat $a \leq b$
+- een grootste vast punt voor T is een vast punt a voor T zodat voor elk ander vast punt voor T geldt dat $a \geq b$
+
+### de stelling van Kleene
+
+### voorbeeld: de transitieve sluiting van een relatie
+
