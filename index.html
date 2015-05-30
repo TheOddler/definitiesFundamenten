@@ -97,6 +97,17 @@
 <li><a href="#petrinetten"><span class="toc-section-number">4.11.4</span> Petrinetten</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#vastepuntstheorie"><span class="toc-section-number">5</span> Vastepuntstheorie</a><ul>
+<li><a href="#orderelaties"><span class="toc-section-number">5.1</span> Orderelaties</a><ul>
+<li><a href="#basisbegrippen"><span class="toc-section-number">5.1.1</span> Basisbegrippen</a></li>
+<li><a href="#monotone-en-continue-afbeeldingen"><span class="toc-section-number">5.1.2</span> Monotone en continue afbeeldingen</a></li>
+</ul></li>
+<li><a href="#de-stellingen-van-tarski-en-kleene"><span class="toc-section-number">5.2</span> De stellingen van Tarski en Kleene</a><ul>
+<li><a href="#de-stelling-van-tarski"><span class="toc-section-number">5.2.1</span> de stelling van Tarski</a></li>
+<li><a href="#de-stelling-van-kleene"><span class="toc-section-number">5.2.2</span> de stelling van Kleene</a></li>
+<li><a href="#voorbeeld-de-transitieve-sluiting-van-een-relatie"><span class="toc-section-number">5.2.3</span> voorbeeld: de transitieve sluiting van een relatie</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
 <h1 id="inleiding"><a href="#inleiding"><span class="header-section-number">1</span> inleiding</a></h1>
@@ -526,5 +537,74 @@ max \{m | er bestaat een string x \in T^*, van lengte n die in m stappen aanvaar
 <dd><p>een markering M is begrensd indien er een n bestaat zodanig dat bij gelijk welk salvo geen enkele plaats ooit meer dan n tokes bevat. Een begrensde markering waarvoor <span class="math"><em>n</em> = 1</span> wordt een veilige markering genoemd.</p>
 </dd>
 </dl>
+<h1 id="vastepuntstheorie"><a href="#vastepuntstheorie"><span class="header-section-number">5</span> Vastepuntstheorie</a></h1>
+<h2 id="orderelaties"><a href="#orderelaties"><span class="header-section-number">5.1</span> Orderelaties</a></h2>
+<h3 id="basisbegrippen"><a href="#basisbegrippen"><span class="header-section-number">5.1.1</span> Basisbegrippen</a></h3>
+<dl>
+<dt>partiele orderelatie</dt>
+<dd>Een relatie R op een verzameling S is een (partiele)orde(relatie) als en slechts als voldaan is aan de volgende drie voorwaarden
+</dd>
+</dl>
+<ul>
+<li>R is reflexief: <span class="math">∀ <em>x</em> ∈ <em>S</em>: <em>x</em><em>R</em><em>x</em></span></li>
+<li>R is antisymmetrisch: <span class="math">∀ <em>x</em>, <em>y</em> ∈ <em>S</em>: <em>x</em><em>R</em><em>y</em></span> en <span class="math"><em>y</em><em>R</em><em>x</em> ⇒ <em>x</em> = <em>y</em></span></li>
+<li>R is transitief: <span class="math">∀ <em>x</em>, <em>y</em>, <em>z</em> ∈ <em>S</em>: <em>x</em><em>R</em><em>y</em></span> en <span class="math"><em>y</em><em>R</em><em>z</em> ⇒ <em>x</em><em>R</em><em>z</em></span></li>
+</ul>
+<dl>
+<dt>boven -en ondergrens</dt>
+<dd>zij S een verzameling met een partiele orde <span class="math"><em>l</em><em>e</em><em>q</em></span>
+</dd>
+</dl>
+<ul>
+<li><span class="math"><em>q</em> ∈ <em>S</em></span> is een bovengrens (of majorant) voor een deel <span class="math"><em>X</em> ⊆ <em>S</em> ⇔ ∀ <em>x</em> ∈ <em>X</em>: <em>x</em> ≤ <em>a</em></span></li>
+<li><span class="math"><em>b</em> ∈ <em>S</em></span> is een ondergrens (of minorant) voor een deel <span class="math"><em>X</em> ⊆ <em>S</em> ⇔ ∀ <em>x</em> ∈ <em>X</em>: <em>b</em> ≤ <em>x</em></span></li>
+</ul>
+<dl>
+<dt>sup en inf</dt>
+<dd>zij <span class="math"><em>S</em>,  ≤ </span> een een geordende verzameling <span class="math"><em>X</em> ⊆ <em>S</em></span>
+</dd>
+</dl>
+<ul>
+<li><span class="math"><em>a</em> ∈ <em>S</em></span> is een kleinste bovengrens van X of een supremum van X, notatie <span class="math"><em>a</em> = <em>s</em><em>u</em><em>p</em>(<em>X</em>)</span> als en slechts als a een bovengrens is voor X en voor elke bovengrens a’ vqn X geldt dat <span class="math"><em>a</em> ≤ <em>a</em>ʹ</span></li>
+<li><span class="math"><em>b</em> ∈ <em>S</em></span> is een grootste ondergrens van X of een infinum van X, notatie <span class="math"><em>b</em> = <em>i</em><em>n</em><em>f</em>(<em>X</em>)</span> als en slechts als b een ondergrens is voor X en voor elke ondergrens b’ van X gelt dat <span class="math"><em>b</em> ≥ <em>b</em>ʹ</span></li>
+</ul>
+<dl>
+<dt>complete tralie</dt>
+<dd><p>Een partieel geordende verzameling <span class="math"><em>L</em>,  ≤ </span> is een complete tralie als sup(X) en inf(X) bestaan voor een niet-lege deelverzameling <span class="math"><em>X</em> ⊆ <em>L</em></span></p>
+</dd>
+<dt>top-en bodemelement</dt>
+<dd>In een complete tralie <span class="math"><em>L</em>,  ≤ </span> noemen we
+</dd>
+</dl>
+<ul>
+<li><span class="math">⊤</span> = topelement = sup(L)</li>
+<li><span class="math">⊥</span> = bodemelement = inf(L)</li>
+</ul>
+<h3 id="monotone-en-continue-afbeeldingen"><a href="#monotone-en-continue-afbeeldingen"><span class="header-section-number">5.1.2</span> Monotone en continue afbeeldingen</a></h3>
+<dl>
+<dt>monotone afbeelding</dt>
+<dd><p>zij <span class="math"><em>L</em>,  ≤ </span> een geordende verzameling. Een afbeelding <span class="math"><em>T</em>: <em>L</em> → <em>L</em></span> noemen we monotoon als uit <span class="math"><em>x</em> ≤ <em>y</em></span> volgt dat <span class="math"><em>T</em>(<em>x</em>) ≤ <em>T</em>(<em>Y</em>)</span></p>
+</dd>
+<dt>gerichte verzameling</dt>
+<dd><p>Beschouw een willekeurige deelverzameling X van een complete tralie <span class="math"><em>L</em>,  ≤ </span>. X is gericht <span class="math"> ⇔ </span> elke eindige deelverzameling van X heeft een bovengrens in X</p>
+</dd>
+<dt>continue afbeelding</dt>
+<dd><p>een afbeelding <span class="math"><em>T</em>: <em>L</em> → <em>L</em></span> op een complete tralie <span class="math"><em>L</em>,  ≤ </span> wordt een continue afbeelding genoemd indien <span class="math"><em>T</em>(<em>s</em><em>u</em><em>p</em>(<em>X</em>)) = <em>s</em><em>u</em><em>p</em>(<em>T</em>(<em>X</em>))</span> voor elke gerichte deelverzameling X van L.<span class="math">(<em>T</em>(<em>X</em>) = {<em>t</em>(<em>x</em>)∣<em>x</em> ∈ <em>X</em>})</span></p>
+</dd>
+</dl>
+<h2 id="de-stellingen-van-tarski-en-kleene"><a href="#de-stellingen-van-tarski-en-kleene"><span class="header-section-number">5.2</span> De stellingen van Tarski en Kleene</a></h2>
+<h3 id="de-stelling-van-tarski"><a href="#de-stelling-van-tarski"><span class="header-section-number">5.2.1</span> de stelling van Tarski</a></h3>
+<dl>
+<dt>vaste punten</dt>
+<dd>zij <span class="math"><em>L</em>,  ≤ </span> een complete tralie en beschouw afbeelding <span class="math"><em>T</em>: <em>L</em> → <em>L</em></span>
+</dd>
+</dl>
+<ul>
+<li>we noemen <span class="math"><em>a</em> ∈ <em>L</em></span> een vast punt voor T als <span class="math"><em>T</em>(<em>a</em>) = <em>a</em></span></li>
+<li>een kleinste vast punt voor T is een vast punt a voor T zodat elk ander vast punt b voor T geldt dat <span class="math"><em>a</em> ≤ <em>b</em></span></li>
+<li>een grootste vast punt voor T is een vast punt a voor T zodat voor elk ander vast punt voor T geldt dat <span class="math"><em>a</em> ≥ <em>b</em></span></li>
+</ul>
+<h3 id="de-stelling-van-kleene"><a href="#de-stelling-van-kleene"><span class="header-section-number">5.2.2</span> de stelling van Kleene</a></h3>
+<h3 id="voorbeeld-de-transitieve-sluiting-van-een-relatie"><a href="#voorbeeld-de-transitieve-sluiting-van-een-relatie"><span class="header-section-number">5.2.3</span> voorbeeld: de transitieve sluiting van een relatie</a></h3>
 </body>
 </html>
