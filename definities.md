@@ -97,7 +97,7 @@ beslissen van een taal
 :	Een turingmachine beslist een taal als voor elke string $s \in L$ de turingmachine stopt in een aanvaardbare toestand, en voor elke string $s \notin L$ de turingmachine stopt in een onaanvaardbare toestand.
 
 turingbeslisbaar
-:	Een taal wordt turing-beslistbaar, of kortweg beslisbaar genoemd als er een turingmachine bestaat die L beslist. Turing-beslisbare talen worden ook wel recursieve talen genoemd.
+:	Een taal wordt turing-beslisbaar, of kortweg beslisbaar genoemd als er een turingmachine bestaat die L beslist. Turing-beslisbare talen worden ook wel recursieve talen genoemd.
 
 ### Niet-deterministische turing-machines
 
