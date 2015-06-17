@@ -28,7 +28,7 @@ taal
 reguliere taal
 :	indien $\Sigma$ een alfabet is, dan wordt de klasse R van alle reguliere talen over $\Sigma$ inductief als volgt gedefinieert:
 - $\emptyset \in R, \{\lambda\} \in R$ en $\forall \sigma \in \Sigma: {\sigma} \in R$
-- indien $A,B \in R$, dan ook $AB \in R$ en $A^* \in R$.
+- indien $A,B \in R$, dan ook $AB \in R$, $A \cup B \in R$ en $A^* \in R$.
 - Elke taal uit R wordt ook een reguliere taal genoemd.
 
 ### reguliere uitdrukkingen
