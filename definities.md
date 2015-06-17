@@ -88,7 +88,7 @@ Turingmachine
 ### Turingmachines en talen
 
 taal bepaald door een turingmachine
-:	De taal bepaald door een turingmachine M, genoteerd $l(M)$, is de verzameling van alle invoerstrings waarvoor M in een aanvaardbare toestand eindigt. Gegeven een taal L zeggen we dat L herkend wordt door M als $L=L(M)$
+:	De taal bepaald door een turingmachine M, genoteerd $L(M)$, is de verzameling van alle invoerstrings waarvoor M in een aanvaardbare toestand eindigt. Gegeven een taal L zeggen we dat L herkend wordt door M als $L=L(M)$
 
 turing-herkenbaar
 :	Een taal L wordt turing-herkenbaar genoemd als er een turingmachine is die L herkent. Turing-herkenbare talen worden ook recursief opsombare talen genoemd.
@@ -149,7 +149,7 @@ de klasse NP
 #### Polynomiale verifieerbaarheid
 
 polynomiaal verifieerbaar
-:	een taal L is polynomiaal verifieerbaar als en slechts als er een TM bestaat zodat voor elke string s een andere string c, een zogenaamd certificaat, bestaat zodat geldt: M aanvaardt de string (c,s) in een tijd polynomiaal is -s- als en slechts als $s \in L$.
+:	een taal L is polynomiaal verifieerbaar als en slechts als er een TM bestaat zodat voor elke string s een andere string c, een zogenaamd certificaat, bestaat zodat geldt: M aanvaardt de string (c,s) in een tijd polynomiaal is |s| als en slechts als $s \in L$.
 
 de klasse NP (alternatieve definitie)
 :	Men duidt met NP de klasse aan van polynomiaal verifieerbare talen.
@@ -224,8 +224,8 @@ samenhangende graaf
 Hamiltoniaans pad, hamiltoniaanse kring
 :	Zij gegeven een graaf G. Een hamiltoniaans pad van G is een pad waarin elke knoop van G precies een keer voorkomt. Een hamiltoniaanse kring van G is een enkelvoudige kring waarin elke knoop van G voorkomt.
 
-euleriaans pad, euleriaanse kring
-:	Zij gegeven een graaf G. Een euleriaans pad is een waarin elke knoop van G minstens 1 keer voorkomt en elke boog van G precies 1 keer voorkomt. Een euleriaanse kring van G is een Euleriaans pad dat ook een kring is.
+Euleriaans pad, euleriaanse kring
+:	Zij gegeven een graaf G. Een euleriaans pad is een pad waarin elke knoop van G minstens 1 keer voorkomt en elke boog van G precies 1 keer voorkomt. Een euleriaanse kring van G is een Euleriaans pad dat ook een kring is.
 
 ### deelgrafen en componenten
 
